@@ -5,7 +5,7 @@ var downloadBtn = document.getElementById('download-btn')
 
 var image = new Image()
 image.crossOrigin="anonymous";
-image.src = 'https://github.com/dinogust/ecertificate/blob/611f376ae2e24453c050a8da801450f34576d67f/certbase.jpg'
+image.src = 'https://raw.githubusercontent.com/dinogust/ecertificate/611f376ae2e24453c050a8da801450f34576d67f/certbase.jpg'
 image.onload = function () {
 	drawImage()
 }
