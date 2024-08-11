@@ -5,7 +5,7 @@ var downloadBtn = document.getElementById('download-btn')
 
 var image = new Image()
 image.crossOrigin="anonymous";
-image.src = 'certificate.jpg'
+image.src = 'certbase.jpg'
 image.onload = function () {
 	drawImage()
 }
@@ -13,7 +13,7 @@ image.onload = function () {
 function drawImage() {
 	// ctx.clearRect(0, 0, canvas.width, canvas.height)
 	ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
-	ctx.font = '40px monotype corsiva'
+	ctx.font = '40px Arial'
 	ctx.fillStyle = '#29e'
 	ctx.fillText(nameInput.value, 40, 180)
 }
@@ -24,5 +24,5 @@ nameInput.addEventListener('input', function () {
 
 downloadBtn.addEventListener('click', function () {
 	downloadBtn.href = canvas.toDataURL('image/jpg')
-	downloadBtn.download = 'Certificate - ' + nameInput.value
+	downloadBtn.download = 'ISS 2024 E-CERTIFICATE - ' + nameInput.value
 })
