@@ -23,6 +23,6 @@ nameInput.addEventListener('input', function () {
 })
 
 testA.addEventListener('click', function () {
-	testA.href = canvas.toDataURL('image/jpg')
-	testA.download = 'ISS 2024 E-CERTIFICATE - ' + nameInput.value
+	downloadBtn.href = canvas.toDataURL('image/jpg')
+	downloadBtn.download = 'ISS 2024 E-CERTIFICATE - ' + nameInput.value
 })
