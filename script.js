@@ -5,7 +5,7 @@ var downloadBtn = document.getElementById('download-btn')
 
 var image = new Image()
 image.crossOrigin="anonymous";
-image.src = 'certbase.jpg'
+image.src = ''
 image.onload = function () {
 	drawImage()
 }
