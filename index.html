@@ -9,12 +9,10 @@
 
 <body>
     <div class="container">
-        <h1>Certificate Generator</h1>
-        <label>
-            <input id="name" type='text'>
-        </label>
-        <a href="#" id="download-btn">CLAIM</a>
-        <canvas id="canvas" height="877px" width="620px"></canvas>
+        <label for="name">Enter Your Name:</label>
+        <input id="name" type='text' class="form-control mb-3" placeholder="Your Name">
+        <button id="download-btn" class="btn btn-primary">CLAIM</button>
+        <canvas id="canvas" height="877px" width="620px" class="border mt-3"></canvas>
     </div>
     <script src="script.js"></script>
 </body>
