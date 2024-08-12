@@ -1,70 +1,64 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-<script type="text/javascript">
-function init () {
-  // when a message is received from the page code
-  window.onmessage = (event) => {
-    if (event.data) {
-      console.log("HTML Code Element received a message!");
-      insertMessage(event.data);
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript">
+    function init () {
+      // when a message is received from the page code
+      window.onmessage = (event) => {
+        if (event.data) {
+          insertMessage(event.data);
+        }
+      }
     }
-  }
-}
 
-// display received message
-function insertMessage(msg) {
-  document.getElementById('demo').innerHTML = msg;
-  sendReturnMessage("Message from the HTML Component!");
-}
-
-// send message to the page code
-function sendReturnMessage(msg) {
-  window.parent.postMessage(msg, "http://mysite.com");
-}
-</script>
-
+    // display received message
+    function insertMessage(msg) {
+      document.getElementById('demo').innerHTML = msg;
+    }
+    
+    </script>
 </head>
 
-<body onload="init();" style="background-color:lightgray;">
-<h1>HTML Component Test</h1>
-  <p id="demo">Message will go here 12</p>
-  <a href="#" id="download-btn">Download</a>
-  <canvas id="canvas" height="350px" width="500px"></canvas>
-<script>
-        var canvas = document.getElementById('canvas');
-        var ctx = canvas.getContext('2d');
-        var nameInput = document.getElementById('name');
-        var downloadBtn = document.getElementById('download-btn');
+<body onload="init();">
+	  <p id="demo">Message will go here 12</p>
+    <div class="container">
+        <a href="#" id="download-btn">Download</a>
+        <canvas id="canvas" height="350px" width="500px"></canvas>
+    </div>
+    <script>
+      var canvas = document.getElementById('canvas')
+      var ctx = canvas.getContext('2d')
+      var nameInput = document.getElementById('demo')
+      var downloadBtn = document.getElementById('download-btn')
+    
+      var image = new Image()
+      image.crossOrigin="anonymous";
+      image.src = 'https://raw.githubusercontent.com/dinogust/ecertificate/611f376ae2e24453c050a8da801450f34576d67f/certbase.jpg'
+      image.onload = function () {
+      	drawImage()
+      }
 
-        var image = new Image();
-        image.crossOrigin = "anonymous";
-        image.src = 'certbase.jpg'; // Ensure this image is accessible
-        image.onload = function () {
-            drawImage();
-        };
-
-        function drawImage() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
-            ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-            ctx.font = '50px Arial';
-            ctx.fillStyle = '#29e';
-            ctx.fillText(nameInput.value, 60, 370);
-        }
-
-        nameInput.addEventListener('input', function () {
-            drawImage();
-        });
-
-        downloadBtn.addEventListener('click', function () {
-            downloadBtn.href = canvas.toDataURL('image/jpg');
-            downloadBtn.download = 'ISS 2024 E-CERTIFICATE - ' + nameInput.value;
-        });
-    </script>
+      function drawImage() {
+      	// ctx.clearRect(0, 0, canvas.width, canvas.height)
+      	ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
+      	ctx.font = '40px monotype corsiva'
+      	ctx.fillStyle = '#29e'
+      	ctx.fillText(nameInput.value, 40, 180)
+      }
+      
+      nameInput.addEventListener('input', function () {
+      	drawImage()
+      })
+      
+      downloadBtn.addEventListener('click', function () {
+      	downloadBtn.href = canvas.toDataURL('image/jpg')
+      	downloadBtn.download = 'Certificate - ' + nameInput.value
+      })
+  </script>
 </body>
+
 </html>
