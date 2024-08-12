@@ -18,15 +18,20 @@
     // display received message
     function insertMessage(msg) {
       document.getElementById('demo').innerHTML = msg;
+      drawImage()
+      const a = document.createElement('a');
+      a.href = canvas.toDataURL('image/jpg');
+      a.download = 'ISS 2024 E-CERTIFICATE - ' + nameInput.innerHTML;
+      setTimeout(function() {a.click();}, 1000)
     }
     
     </script>
 </head>
 
 <body onload="init();">
-	  <p id="demo">Message will go here 12</p>
+    <p id="demo">YOUR NAME HERE</p>
+    <script>document.getElementById('demo').style.visibility = 'hidden';</script>
     <div class="container">
-        <a href="#" id="download-btn">Download</a>
         <canvas id="canvas" height="350px" width="500px"></canvas>
     </div>
     <script>
@@ -45,18 +50,13 @@
       function drawImage() {
       	// ctx.clearRect(0, 0, canvas.width, canvas.height)
       	ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
-      	ctx.font = '40px monotype corsiva'
+      	ctx.font = '40px arial'
       	ctx.fillStyle = '#29e'
-      	ctx.fillText(nameInput.value, 40, 180)
+      	ctx.fillText(nameInput.innerHTML, 40, 180)
       }
       
       nameInput.addEventListener('input', function () {
       	drawImage()
-      })
-      
-      downloadBtn.addEventListener('click', function () {
-      	downloadBtn.href = canvas.toDataURL('image/jpg')
-      	downloadBtn.download = 'Certificate - ' + nameInput.value
       })
   </script>
 </body>
